@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import xml.etree.ElementTree as ET
 import random
 import numpy as np
@@ -156,7 +158,7 @@ def sent(src,dest,pivot_num,pivot_min_st,dim,c_parm):
 
     sentence = "dim = "+str(dim)+"  on dev : rep = "+str(log_dev_rep)+" , non = " + str(log_dev_source)+" all = "+str(log_dev_all)+ ", on target: rep = "+ str(lgR) + " , non = "+ str(lgs) + " all = "+str(lg)+ " c_parm = "+str(c_parm)
 
-    print sentence
+    print(sentence)
     with open(filename, "a") as myfile:
         myfile.write(sentence+"\n")
 

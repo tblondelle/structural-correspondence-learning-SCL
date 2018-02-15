@@ -1,10 +1,13 @@
-import xml.etree.ElementTree as ET
+from __future__ import print_function
+
+import os
+import pickle
 import random
 import numpy as np
+import xml.etree.ElementTree as ET
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import mutual_info_score
-import pickle
-import os
+
 
 def XML2arrayRAW(neg_path, pos_path):
     reviews = []
@@ -17,11 +20,8 @@ def XML2arrayRAW(neg_path, pos_path):
         reviews.append(rev.text)
         negReviews.append(rev.text)
 
-
-
     pos_tree = ET.parse(pos_path)
     pos_root = pos_tree.getroot()
-
     for rev in pos_root.iter('review'):
         reviews.append(rev.text)
         posReviews.append(rev.text)
@@ -68,7 +68,6 @@ def GetTopNMI(n,CountVectorizer,X,target):
 
 
 def getCounts(X,i):
-
     return (sum(X[:,i]))
 
 def preproc(pivot_num,pivot_min_st,src,dest):
@@ -130,7 +129,7 @@ def preproc(pivot_num,pivot_min_st,src,dest):
             pivotsCounts.append(bigram_vectorizer_unlabeled.get_feature_names().index(name))
             c+=1
          #   if(c<100):
-              #  print "feature is ",name," it MI is ",RMI[MIsorted[i]]," in source ",s_count," in target ",t_count
+              #  print("feature is ",name," it MI is ",RMI[MIsorted[i]]," in source ",s_count," in target ",t_count)
         i+=1
 
 
@@ -139,11 +138,11 @@ def preproc(pivot_num,pivot_min_st,src,dest):
     target_valod = len(target)/5
     c=0
     y = X_2_train_unlabeled[:,pivotsCounts]
-    print "old x is ", X_2_train_unlabeled.shape
-    x =np.delete(X_2_train_unlabeled, pivotsCounts, 1)  # delete second column of C
-    print "new x is ", x.shape
+    print("old x is ", X_2_train_unlabeled.shape)
+    x = np.delete(X_2_train_unlabeled, pivotsCounts, 1)  # delete second column of C
+    print("new x is ", x.shape)
     #taking 1500 from books and 4000 from kitchen
-    x_valid=np.concatenate((x[:source_valid][:], x[-target_valod:][:]), axis=0)
+    x_valid = np.concatenate((x[:source_valid][:], x[-target_valod:][:]), axis=0)
 
     x = x[source_valid:-target_valod][:]
 
