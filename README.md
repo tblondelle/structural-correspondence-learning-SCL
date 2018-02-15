@@ -9,25 +9,22 @@ If you use this implementation in your article, please cite :)
   author    = {Ziser, Yftah  and  Reichart, Roi},
   title     = {Neural Structural Correspondence Learning for Domain Adaptation},
   booktitle = {Proceedings of the 21st Conference on Computational Natural Language Learning (CoNLL 2017)},
-  year      = {2017},  
+  year      = {2017},
   pages     = {400--410},	
 }
 ```
 ## Prerequisites
 SCL requires the following packages:
 
-Python >= 2.7
-
-numpy
-
-scipy
-
-scikit-learn
+- Python >= 2.7
+- numpy
+- scipy
+- scikit-learn
 
 ## Example
-You can find an explained example in run.py: 
+You can find an explained example in `run.py`: 
 
-```
+```python
 import tr
 import sentiment
 if __name__ == '__main__':
